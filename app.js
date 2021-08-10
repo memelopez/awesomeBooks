@@ -70,7 +70,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   if (title === '' || author === '') {
     console.log('Fill in the title and author');
   } else {
-    // Instantiate book
+    // make an object 
     const book = {};
     book.title = title;
     book.author = author;
