@@ -57,9 +57,7 @@ class UI {
   }
 
   static deleteBook(el) {
-    if (el.classList.contains('delete')) {
-      el.parentElement.parentElement.remove();
-    }
+    el.remove();
   }
 
   static clearFields() {
@@ -96,4 +94,16 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     // Clear fields
     UI.clearFields();
   }
+});
+
+// Event: Delete Books
+document.querySelector('#book-list').addEventListener('click', (e) => {
+  const ulList = document.querySelector('#book-list');
+  const item2BeRemoved = e.target.parentElement;
+  const nodes = Array.from(ulList.children);
+  const index = nodes.indexOf(item2BeRemoved);
+
+  UI.deleteBook(item2BeRemoved);
+
+  Store.removeBook(index);
 });
