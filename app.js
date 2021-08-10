@@ -78,7 +78,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   const title = document.querySelector('#book-title').value;
   const author = document.querySelector('#book-author').value;
 
-  // Validate
+  // Validate inputs
   if (title === '' || author === '') {
     console.log('Fill in the title and author');
   } else {
