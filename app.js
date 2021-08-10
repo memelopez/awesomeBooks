@@ -6,6 +6,34 @@ class Book {
   }
 }
 
+// Store Class: Handles Storage
+class Store {
+  static getBooks() {
+    let books;
+    if (localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'));
+    }
+
+    return books;
+  }
+
+  static addBook(book) {
+    const books = Store.getBooks();
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static removeBook(index) {
+    const books = Store.getBooks();
+
+    books.splice(index, 1);
+
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+}
+
 // UI Class: Handle UI Tasks
 class UI {
   static displayBooks() {
@@ -40,50 +68,21 @@ class UI {
   }
 }
 
-// Store Class: Handles Storage 
-class Store {
-  static getBooks() {
-    let books;
-    if (localStorage.getItem('books') === null) {
-      books = [];
-    } else {
-      books = JSON.parse(localStorage.getItem('books'));
-    }
-
-    return books;
-  }
-
-  static addBook(book) {
-    const books = Store.getBooks();
-    books.push(book);
-    localStorage.setItem('books', JSON.stringify(books));
-  }
-
-  static removeBook(index) {
-    const books = Store.getBooks();
-
-    books.splice(index, 1);
-
-    localStorage.setItem('books', JSON.stringify(books));
-  }
-}
-
-// Event: Display Books 
+// Event: Display Books
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
 
-// Event: Add a Book 
+// Event: Add a Book
 document.querySelector('#book-form').addEventListener('submit', (e) => {
   // Prevent actual submit
   e.preventDefault();
 
-  // Get form values 
+  // Get form values
   const title = document.querySelector('#book-title').value;
   const author = document.querySelector('#book-author').value;
 
-
   // Validate
   if (title === '' || author === '') {
-    console.log("Fill in the title and author");
+    console.log('Fill in the title and author');
   } else {
     // Instantiate book
     const book = new Book(title, author);
@@ -98,4 +97,3 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     UI.clearFields();
   }
 });
-
