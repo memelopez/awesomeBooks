@@ -1,73 +1,61 @@
-// Book Class: Represents a Book
-class Book {
-  constructor(title, author) {
-    this.title = title;
-    this.author = author;
+// functions for local storage
+function getBooks() {
+  let books;
+  if (localStorage.getItem('books') === null) {
+    books = [];
+  } else {
+    books = JSON.parse(localStorage.getItem('books'));
   }
+
+  return books;
 }
 
-// Store Class: Handles Storage
-class Store {
-  static getBooks() {
-    let books;
-    if (localStorage.getItem('books') === null) {
-      books = [];
-    } else {
-      books = JSON.parse(localStorage.getItem('books'));
-    }
-
-    return books;
-  }
-
-  static addBook(book) {
-    const books = Store.getBooks();
-    books.push(book);
-    localStorage.setItem('books', JSON.stringify(books));
-  }
-
-  static removeBook(index) {
-    const books = Store.getBooks();
-
-    books.splice(index, 1);
-
-    localStorage.setItem('books', JSON.stringify(books));
-  }
+function addBook(book) {
+  const books = getBooks();
+  books.push(book);
+  localStorage.setItem('books', JSON.stringify(books));
 }
 
-// UI Class: Handle UI Tasks
-class UI {
-  static displayBooks() {
-    const books = Store.getBooks();
+function removeBook(index) {
+  const books = getBooks();
 
-    books.forEach((book) => UI.addBookToList(book));
-  }
+  books.splice(index, 1);
 
-  static addBookToList(book) {
-    const list = document.querySelector('#book-list');
+  localStorage.setItem('books', JSON.stringify(books));
+}
 
-    const item = document.createElement('li');
+// functions UI : Handle UI Tasks
+function addBookToList(book) {
+  const list = document.querySelector('#book-list');
 
-    item.innerHTML = `
-      <p>${book.title}</p>
-      <p>${book.author}</p>
-      <button>Remove</button>
-    `;
+  const item = document.createElement('li');
 
-    list.appendChild(item);
-  }
+  item.innerHTML = `
+    <p>${book.title}</p>
+    <p>${book.author}</p>
+    <button>Remove</button>
+  `;
 
-  static deleteBook(el) {
-    el.remove();
-  }
+  list.appendChild(item);
+}
 
-  static clearFields() {
-    document.querySelector('#book-title').value = '';
-    document.querySelector('#book-author').value = '';
-  }
+function displayBooks() {
+  const books = getBooks();
+
+  books.forEach((book) => addBookToList(book));
+}
+
+function deleteBook(el) {
+  el.remove();
+}
+
+function clearFields() {
+  document.querySelector('#book-title').value = '';
+  document.querySelector('#book-author').value = '';
 }
 
 // Event: Display Books
-document.addEventListener('DOMContentLoaded', UI.displayBooks);
+document.addEventListener('DOMContentLoaded', displayBooks());
 
 // Event: Add a Book
 document.querySelector('#book-form').addEventListener('submit', (e) => {
@@ -83,16 +71,18 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     console.log('Fill in the title and author');
   } else {
     // Instantiate book
-    const book = new Book(title, author);
+    const book = {};
+    book.title = title;
+    book.author = author;
 
     // Add Book to UI
-    UI.addBookToList(book);
+    addBookToList(book);
 
     // Add book to store
-    Store.addBook(book);
+    addBook(book);
 
     // Clear fields
-    UI.clearFields();
+    clearFields();
   }
 });
 
@@ -103,7 +93,7 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
   const nodes = Array.from(ulList.children);
   const index = nodes.indexOf(item2BeRemoved);
 
-  UI.deleteBook(item2BeRemoved);
+  deleteBook(item2BeRemoved);
 
-  Store.removeBook(index);
+  removeBook(index);
 });
