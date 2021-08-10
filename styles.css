@@ -3,3 +3,12 @@
 a {
   text-decoration: none;
 }
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  border-bottom: 1px solid grey;
+  padding-bottom: 5px;
+}
