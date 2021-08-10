@@ -15,7 +15,11 @@
   "rules": {
     "no-shadow": "off",
     "no-param-reassign": "off",
-    "eol-last": "off"
+    "eol-last": "off",
+    "max-classes-per-file": [
+      "error",
+      3
+    ]
   },
   "ignorePatterns": [
     "dist/",
