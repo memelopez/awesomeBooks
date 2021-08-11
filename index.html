@@ -10,10 +10,11 @@
   <script src="app.js" defer></script>
 </head>
 <body>
-  <div class="container-fluid d-flex flex-column justify-content-center">
-    <h1>Awesome Books</h1>
-    <ul id="book-list" class="book-list"></ul>
-    <form action="submit" id="book-form" class="book-form">
+  <div class="container-fluid">
+    <h1 class="text-center my-4">Awesome Books</h1>
+    <ul id="book-list" class="book-list m-auto border border-dark"></ul>
+    <form action="submit" id="book-form" class="book-form m-auto">
+      <h2 class="text-center my-4">Add a New Book</h2>
       <input type="text" name="" id="book-title" placeholder="Title">
       <input type="text" name="" id="book-author" placeholder="Author">
       <input type="submit" value="Add book">

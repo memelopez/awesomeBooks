@@ -6,11 +6,19 @@ a {
 
 ul {
   list-style-type: none;
+  width: 60%;
 }
 
 li {
   border-bottom: 1px solid grey;
-  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+ul#book-list li:nth-child(odd) {
+  background-color: rgb(190, 190, 190);
 }
 
 .book-form {
