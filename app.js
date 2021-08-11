@@ -48,8 +48,7 @@ class UI {
     const item = document.createElement('li');
 
     item.innerHTML = `
-      <p>${book.title}</p>
-      <p>${book.author}</p>
+      <p class="p-0 m-0">"${book.title}" by ${book.author}</p>
       <button>Remove</button>
     `;
 
