@@ -10,7 +10,6 @@ ul {
 }
 
 li {
-  border-bottom: 1px solid grey;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,4 +32,21 @@ ul#book-list li:nth-child(odd) {
 
 .book-list {
   padding-left: 0;
+}
+
+.nav-item {
+  color: black;
+}
+
+.contact-ul {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.myFooter {
+  position: absolute;
+  bottom: 0;
 }

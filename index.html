@@ -8,17 +8,59 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://bootswatch.com/5/litera/bootstrap.min.css">
   <script src="app.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js" defer></script>
 </head>
 <body>
-  <div class="container-fluid">
-    <h1 class="text-center my-4">Awesome Books</h1>
-    <ul id="book-list" class="book-list m-auto border border-dark"></ul>
-    <form action="submit" id="book-form" class="book-form m-auto">
-      <h2 class="text-center my-4">Add a New Book</h2>
-      <input type="text" name="" id="book-title" placeholder="Title">
-      <input type="text" name="" id="book-author" placeholder="Author">
-      <input type="submit" value="Add book">
-    </form>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light p-3 d-flex justify-content-between">
+    <h4 class="m-0"><a class="text-decoration-none nav-item" href="#">Awesome Books</a></h4>
+    <div class="nav-links">
+      <a id="listA" class="text-decoration-none px-2 nav-item" href="">List</a>
+      <span>|</span>
+      <a id="formA" class="text-decoration-none px-2 nav-item" href="">Add New</a>
+      <span>|</span>
+      <a id="contactA" class="text-decoration-none px-2 nav-item" href="">Contact</a>
+    </div>
+  </nav>
+  <div class="container-fluid d-flex justify-content-end pt-2">
+    <span id="luxonDate" class=""></span>
   </div>
+  <div class="container-fluid">
+    <div id="div4list">
+      <h1 class="text-center my-4">Awesome Books</h1>
+      <ul id="book-list" class="book-list m-auto border border-dark"></ul>
+    </div>
+    <div id="div4form">
+      <form action="submit" id="book-form" class="book-form m-auto">
+        <h2 class="text-center my-4">Add a New Book</h2>
+        <input type="text" name="" id="book-title" placeholder="Title">
+        <input type="text" name="" id="book-author" placeholder="Author">
+        <input type="submit" value="Add book">
+      </form>
+    </div>
+    <div id="div4contact" class="row justify-content-center">
+      <div class="col-6">
+        <h2 class="text-center my-4">Contact Information</h2>
+        <p class="text-center">Do you have any questions or you want to say "Hello"?
+          You can reah out to us!
+        </p>
+        <ul class="contact-ul">
+          <li>
+            <p>Our email: mail@mail.com</p>
+          </li>
+          <li>
+            <p>Our phone number: 0043586534422</p>
+          </li>
+          <li>
+            <p>Our address: Streetname 22, 84503 City, Country</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <footer class="bg-light myFooter p-1 col-12 border border-dark px-3">
+    <h5 class="m-0">copyright...</h5>
+    </footer>
+    </div> 
 </body>
 </html>
