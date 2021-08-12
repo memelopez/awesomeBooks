@@ -45,3 +45,8 @@ ul#book-list li:nth-child(odd) {
   flex-direction: column;
   justify-content: center;
 }
+
+.myFooter {
+  position: absolute;
+  bottom: 0;
+}
