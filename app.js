@@ -40,6 +40,23 @@ class UI {
     const books = Store.getBooks();
 
     books.forEach((book) => UI.addBookToList(book));
+
+    // Display Date
+    /* eslint-disable */
+    const DateTime = luxon.DateTime;
+    /* eslint-enable */
+    const now = DateTime.now();
+    const dateText = now.toLocaleString(DateTime.DATETIME_MED);
+    const spanForText = document.querySelector('#luxonDate');
+    spanForText.textContent = dateText;
+
+    // Hide form section
+    const divForm = document.querySelector('#div4form');
+    divForm.classList.add('d-none');
+
+    // Hide contact section
+    const divContact = document.querySelector('#div4contact');
+    divContact.classList.add('d-none');
   }
 
   static addBookToList(book) {
@@ -105,4 +122,53 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
   UI.deleteBook(item2BeRemoved);
 
   Store.removeBook(index);
+});
+
+// Event: show list
+document.querySelector('#listA').addEventListener('click', (e) => {
+  e.preventDefault();
+  const divList = document.querySelector('#div4list');
+  const divForm = document.querySelector('#div4form');
+  const divContact = document.querySelector('#div4contact');
+
+  // Remove d-none from divList
+  const classesDivList = divList.className;
+  divList.className = classesDivList.replaceAll('d-none', '');
+
+  // Add d-none to divList and divForm
+  divForm.classList.add('d-none');
+  divContact.classList.add('d-none');
+});
+
+// Event: show form
+document.querySelector('#formA').addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const divList = document.querySelector('#div4list');
+  const divForm = document.querySelector('#div4form');
+  const divContact = document.querySelector('#div4contact');
+
+  //  Remove d-none from divForm
+  const classesDivForm = divForm.className;
+  divForm.className = classesDivForm.replaceAll('d-none', '');
+
+  // Add d-none to divList and divForm
+  divList.classList.add('d-none');
+  divContact.classList.add('d-none');
+});
+
+// Event: show contact
+document.querySelector('#contactA').addEventListener('click', (e) => {
+  e.preventDefault();
+  const divList = document.querySelector('#div4list');
+  const divForm = document.querySelector('#div4form');
+  const divContact = document.querySelector('#div4contact');
+
+  //  Remove d-none from divContact
+  const classesDivContact = divContact.className;
+  divContact.className = classesDivContact.replaceAll('d-none', '');
+
+  // Add d-none to divList and divForm
+  divList.classList.add('d-none');
+  divForm.classList.add('d-none');
 });
