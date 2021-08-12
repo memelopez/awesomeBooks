@@ -34,3 +34,7 @@ ul#book-list li:nth-child(odd) {
 .book-list {
   padding-left: 0;
 }
+
+.nav-item {
+  color: black;
+}
