@@ -14,6 +14,10 @@ Book list app. Capable of displaying the current book list, adding and removing 
 
 - HTML
 - JavaScript
+- Bootstap
+- Bootswatch litera theme
+- Luxon date 
+- CSS 
 
 ## Live Demo
 
